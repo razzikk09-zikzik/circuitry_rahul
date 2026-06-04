@@ -11,8 +11,16 @@ const projectRoutes = require('./routes/projects');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// CORS Configuration
+const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:5173';
+const corsOptions = {
+  origin: corsOrigin.split(',').map(o => o.trim()),
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 
 // API Routes

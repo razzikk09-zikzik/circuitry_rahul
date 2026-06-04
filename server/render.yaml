@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: circuitry-backend
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: CORS_ORIGIN
+        scope: pr_and_deploy
+        value: https://your-vercel-frontend.vercel.app
